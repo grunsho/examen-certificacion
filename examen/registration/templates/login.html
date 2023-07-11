@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+    {% comment %} El usuario ya ha iniciado sesión, redirigir al home {% endcomment %}
+    {% load static %}
+    <script>
+        window.location.href = "{% url 'index' %}";
+    </script>
+{% else %}
+    <div class="form-contentl">
+        <div class="form-container blog">
+            <div class="form-group">
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+                <h2>¡Bienvenido!</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ loginForm.username.label }}
+                    {{ loginForm.username }}
+                    {{ loginForm.password.label }}
+                    {{ loginForm.password }}
+                    <br>
+                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary">
+                    <div class="text-center mt-2">
+                    <a href="{% url 'register' %}">¿Aún no estás registrado? <b>Registrate aquí</b></a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

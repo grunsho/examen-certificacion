@@ -1,0 +1,51 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}Gestión de productos{% endblock %} 
+
+{% block body %}
+
+  <div class="row align-items-center">
+    <div class="col-12 d-flex justify-content-end py-4">
+      <a href="{% url 'agregar_producto' %}" class="btn btn-primary" role="button">Agregar Producto</a>
+    </div>    
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr>
+          <td>{{ producto.idProducto }}</td>
+          <td>
+            {% comment %} <img src="media/images/producto_default.png" width="100" height="auto"> {% endcomment %}
+          </td>
+          <td>{{ producto.nombreProducto }}</td>
+          <td class="text-center" >{{ producto.precioProducto }}</td>
+          <td>{{ producto.descripcionProducto }}</td>
+          <td class="text-center">{{ producto.stockProducto }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6">
+            <div class="alert alert-danger" role="alert">
+              No hay productos disponibles para esta vista.
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registro{% endblock %}
+{% block body %}
+<div class="form-contentl">
+        <div class="form-container blog">
+            <div class="form-group">
+            {% if formulario.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ formulario.errors }}
+            </div>
+            {% endif %} 
+            <h2 class="card-title">Regístrate aquí</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="m-2">
+                {{ formulario.username.label }}
+                {{ formulario.username }}
+                </div>
+                <div class="m-2">
+                {{ formulario.email.label }}
+                {{ formulario.email }}
+                 </div>
+                <div class="m-2">
+                {{ formulario.email2.label }}
+                {{ formulario.email2 }}
+                </div>
+                <div class="m-2">
+                    {{ formulario.rut.label }}
+                    {{ formulario.rut }}
+                </div>
+                <div class="m-2">
+                    {{ formulario.nombre.label }}
+                    {{ formulario.nombre }}
+                </div>
+                <div class="m-2">
+                    {{ formulario.apellido.label }}
+                    {{ formulario.apellido }}
+                </div>
+                <div class="m-2">
+                    {{ formulario.direccion.label }}
+                    {{ formulario.direccion }}
+                </div>
+                <br>
+                <input type="submit" value="Registrarse" class="btn btn-primary">
+                <div class="text-center mt-2">
+                <a href="{% url 'login' %}">¿Ya tienes cuenta? <b>Inicia sesión</b></a></div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

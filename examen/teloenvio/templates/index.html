@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}TeLoEnvío - Inicio{% endblock %}
+
+{% block body %}
+<a href="{%url 'agregar_producto' %}">Agregar productos</a>
+<a href="{%url 'gestion_productos' %}">Gestión de productos</a>
+<a href="{%url 'crear_productor' %}">Crear productor</a>
+<a href="{%url 'crear_pedido' %}">Crear pedido</a>
+<a href="{%url 'gestion_pedidos' %}">Gestión de pedidos</a>
+<a href="{%url 'detalle_pedidos' %}">Detalle de pedidos</a>
+{% endblock %}

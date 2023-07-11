@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Crear Pedido{% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-body">
+        <h2>Crear Pedido</h2>
+        <form class="row g-3" method="POST">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label>Nombre Cliente</label>
+                <p>{{ pedidos.cliente }}</p>
+            </div>
+            <div class="col-md-6">
+                <label>Fecha pedido</label>
+                <span>{{ pedidos.fechaPedido }}</span>
+            </div>
+            <div class="col-md-6">
+                <label>Dirección de entrega</label>
+                <p>{{ pedido.direccionEntrega }}</p>
+            </div>
+            <div class="col-md-6">
+                <label>Medio de pago</label>
+                {{ pedido.formaPago }}
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{% url 'gestion_pedidos' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
